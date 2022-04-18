@@ -1,0 +1,5 @@
+.searchPage{
+    margin: 100px 70px;
+    display: flex;
+    flex-direction: column;
+}

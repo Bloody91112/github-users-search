@@ -1,0 +1,23 @@
+.searchInput{
+    display: flex;
+    width: 400px;
+    align-items: center;
+}
+
+.searchText{
+    height: 37px;
+    font-size: calc(18px + 10 * (100vw / 1440));
+    flex: 1 1 auto;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+.button{
+    padding: 5px 10px;
+    background-color: rgb(77, 72, 72);
+    border: 2px solid black;
+    color: rgb(218, 218, 218);
+    font-size: calc(14px + 10 * (100vw / 1440));
+    font-family: 'Bebas Neue', cursive;
+}

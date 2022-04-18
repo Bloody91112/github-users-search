@@ -1,0 +1,31 @@
+.unselected{
+    cursor: pointer;
+    font-size: calc(14px + 10 * (100vw / 1440));
+    transition-duration: 0.1s;
+}
+
+.selected{
+    font-weight: bold;
+    font-size: calc(14px + 10 * (100vw / 1440));
+    background-color: rgb(210, 210, 210);
+    transition-duration: 0.1s;
+}
+
+.usersList{
+    list-style-type:none;
+    width: 346px;
+    padding: 0;
+    background-color: rgb(228, 228, 228);
+    height: 500px;
+    overflow: auto;
+}
+
+.usersList p {
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.usersBlock{
+    display: flex;
+}
