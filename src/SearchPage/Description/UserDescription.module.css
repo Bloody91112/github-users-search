@@ -1,13 +1,17 @@
 .userDescription{
     margin-left: 70px;
     display: flex;
-    flex-direction: column;
     margin-top: 16px;
 }
 
 .avatar{
-    width: 500px;
-    height: 500px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgb(222, 222, 222);
+}
+.userData{
+    max-height: 500px;
+    margin-left: 10px;
 }
 
 .prop{
@@ -17,16 +21,29 @@
     border: 2px solid black;
     justify-content: center;
     text-align: center;
-    margin: 5px 0;
+    margin: 0 0 5px 0;
 }
 
 .propName{
-    font-size: calc(24px + 10 * (100vw / 1440));
+    font-size: calc(10px + 10 * (100vw / 1440));
     background-color: rgb(219, 219, 219);
     width: 100%;
 }
 
 .propDescription{
-    font-size: calc(14px + 10 * (100vw / 1440));
-    padding: 10px
+    font-size: calc(7px + 10 * (100vw / 1440));
+    padding: 5px
+}
+
+@media (max-width: 1025px){
+    .userDescription{
+        flex-direction: column;
+        margin-left: 10px;
+        margin: 0;
+    }
+    .avatar{
+        width: 90%;
+        height: 90%;
+        margin-left: 20px;
+    }
 }

@@ -17,7 +17,8 @@
     padding: 0;
     background-color: rgb(228, 228, 228);
     height: 500px;
-    overflow: auto;
+    overflow:scroll;
+    overflow-x: hidden;
 }
 
 .usersList p {
@@ -29,3 +30,17 @@
 .usersBlock{
     display: flex;
 }
+
+@media (max-width: 769px){
+    .usersList{
+        width: unset;
+    }
+    .usersBlock{
+        justify-content: space-between;
+    }
+    .usersList p{
+        padding: 2px 10px 2px 2px;
+        font-size: 10px;
+    }
+}
+    

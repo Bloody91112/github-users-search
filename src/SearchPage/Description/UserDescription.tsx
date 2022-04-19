@@ -5,38 +5,51 @@ import s from './UserDescription.module.css'
 
 
 type propsType = {
-    selectedUser:any
-    searchValue:any
+    selectedUser: any
+    searchValue: any
 }
 
 
 
-export const UserDescription: React.FC<propsType> = ({selectedUser,searchValue}) => {
-    let [userProfile, setUserProfile]:any = useState()
+export const UserDescription: React.FC<propsType> = ({ selectedUser, searchValue }) => {
+    let [userProfile, setUserProfile]: any = useState()
     let [localSearchValue, setLocalSearchValue] = useState()
-   
+    let [currentSelectedUser, setCurrentSelectedUser] = useState('')
+    let [loadingStatus, setLoadingStatus] =useState(false)
 
-   useEffect(() => {
-        if (localSearchValue !== searchValue){
+
+    
+    useEffect(() => {
+        if (currentSelectedUser !== selectedUser){
+            setLoadingStatus(true)
+        }
+    }, [selectedUser,currentSelectedUser])
+
+    useEffect(() => {
+        if (localSearchValue !== searchValue) {
             setUserProfile(null)
             setLocalSearchValue(searchValue)
         }
-   },[localSearchValue, searchValue])
+    }, [localSearchValue, searchValue])
 
 
     useEffect(() => {
         axios.get<any, any>(`https://api.github.com/users/${selectedUser}`)
-            .then(response => setUserProfile(response.data))
+            .then(response => {
+                setUserProfile(response.data)})
+                setLoadingStatus(false)
+                setCurrentSelectedUser(selectedUser)
     }, [selectedUser])
 
-    
-    if (!userProfile) return <Preloader/>
+
+    if (!userProfile) return <Preloader />
+    if (loadingStatus) return <Preloader />
 
     return <div className={s.userDescription}>
 
         <img className={s.avatar} src={userProfile.avatar_url} alt="" />
 
-        <div>
+        <div className={s.userData} >
             {userProfile.login &&
                 <div className={s.prop}>
                     <div className={s.propName}>login</div> 

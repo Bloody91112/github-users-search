@@ -25,12 +25,15 @@ export const SearchList:React.FC<propsType> = ({searchValue}) => {
             return setUsers([])
         }
         axios.get<any,any>(`https://api.github.com/search/users?q=${searchValue}`)
-        .then(response => setUsers(response.data.items))
-
+        .then(response => {
+            setUsers(response.data.items)
+        })
+        
     }, [searchValue])
 
-    
-    if (!users) return <Preloader/>
+
+    if ( !users) return <Preloader />
+
     return <div className={s.usersBlock}>
         <ul className={s.usersList}>
             {users.map((u:any) =>
