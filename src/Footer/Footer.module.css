@@ -1,0 +1,7 @@
+.footer{
+    text-align: center;
+    font-size: calc(20px + 10 * (100vw / 1440));
+    font-family: 'Bebas Neue', cursive;
+    background-color: rgb(184, 184, 184);
+    padding: 10px 0;
+}

@@ -1,0 +1,7 @@
+.header{
+    text-align: center;
+    font-size: calc(44px + 10 * (100vw / 1440));
+    font-family: 'Bebas Neue', cursive;
+    background-color: rgb(184, 184, 184);
+    padding: 30px 0;
+}

@@ -83,7 +83,7 @@ export const UserDescription: React.FC<propsType> = ({ selectedUser, searchValue
             {userProfile.url &&
                 <div className={s.prop}>
                     <div className={s.propName}>Public Link</div>
-                    <div className={s.propDescription}>{userProfile.url}</div>
+                    <div className={s.propDescription}>{userProfile.html_url}</div>
                 </div>}
         </div>
 
