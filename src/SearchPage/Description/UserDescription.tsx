@@ -15,15 +15,15 @@ export const UserDescription: React.FC<propsType> = ({ selectedUser, searchValue
     let [userProfile, setUserProfile]: any = useState()
     let [localSearchValue, setLocalSearchValue] = useState()
     let [currentSelectedUser, setCurrentSelectedUser] = useState('')
-    let [loadingStatus, setLoadingStatus] =useState(false)
+    let [loadingStatus, setLoadingStatus] = useState(false)
 
 
-    
+
     useEffect(() => {
-        if (currentSelectedUser !== selectedUser){
+        if (currentSelectedUser !== selectedUser && searchValue !== "") {
             setLoadingStatus(true)
         }
-    }, [selectedUser,currentSelectedUser])
+    }, [selectedUser, currentSelectedUser, searchValue])
 
     useEffect(() => {
         if (localSearchValue !== searchValue) {
@@ -36,9 +36,10 @@ export const UserDescription: React.FC<propsType> = ({ selectedUser, searchValue
     useEffect(() => {
         axios.get<any, any>(`https://api.github.com/users/${selectedUser}`)
             .then(response => {
-                setUserProfile(response.data)})
-                setLoadingStatus(false)
-                setCurrentSelectedUser(selectedUser)
+                setUserProfile(response.data)
+            })
+        setLoadingStatus(false)
+        setCurrentSelectedUser(selectedUser)
     }, [selectedUser])
 
 
@@ -52,7 +53,7 @@ export const UserDescription: React.FC<propsType> = ({ selectedUser, searchValue
         <div className={s.userData} >
             {userProfile.login &&
                 <div className={s.prop}>
-                    <div className={s.propName}>login</div> 
+                    <div className={s.propName}>login</div>
                     <div className={s.propDescription}>{userProfile.login}</div>
                 </div>}
             {userProfile.name &&
@@ -62,7 +63,7 @@ export const UserDescription: React.FC<propsType> = ({ selectedUser, searchValue
                 </div>}
             {userProfile.location &&
                 <div className={s.prop}>
-                    <div className={s.propName}>Location</div> 
+                    <div className={s.propName}>Location</div>
                     <div className={s.propDescription}>{userProfile.location}</div>
                 </div>}
             {userProfile.follower > 0 &&
@@ -72,12 +73,12 @@ export const UserDescription: React.FC<propsType> = ({ selectedUser, searchValue
                 </div>}
             {userProfile.following > 0 &&
                 <div className={s.prop}>
-                    <div className={s.propName}>Following</div> 
+                    <div className={s.propName}>Following</div>
                     <div className={s.propDescription}>{userProfile.following}</div>
                 </div>}
             {userProfile.public_repos &&
                 <div className={s.prop}>
-                    <div className={s.propName}>Public repositories</div> 
+                    <div className={s.propName}>Public repositories</div>
                     <div className={s.propDescription}>{userProfile.public_repos}</div>
                 </div>}
             {userProfile.url &&
